@@ -14,13 +14,10 @@
                  margin-left: 40%;
                  margin-top: 5%;
              }
-             .fnameError{
-                 display: none;
-                 color:red;
-             }
-             #emailError{
-                  display: none;
-                 color:red;
+            
+             .error {
+                color: red;
+                
              }
           </style>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -28,24 +25,36 @@
     </head>
     
     <body>
+        <?php
+             if (session_status() == PHP_SESSION_NONE) {
+                 session_start();
+             }
+              if(isset($_SESSION['firstNameBack'])){
+                 echo "<script>"
+                  . " alert('This Email is Exist');"
+                         . "</script>";
+             }
+         ?>
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
        <div class="header"></div>
        <div class="container">
+       
+       
            <form id="myForm" method="POST" action="StoreInDB.php" >
                <div class="form-group" >
+                   
                       <label for="FirstNameLabel">First Name</label>
-                      <input type="text" class="form-control" name="firstName" id="fname" placeholder="Enter first name" class="name">
+                      <input type="text" class="form-control" name="firstName" id="fname" placeholder="Enter first name" class="name" value=<?php if(isset($_SESSION['firstNameBack'])) echo $_SESSION['firstNameBack'] ?>>
                </div> 
                <div class="form-group" >
                       <label for="LastNameLabel">Last Name</label>
-                      <input type="name" class="form-control" name="lastName"  id="lname" placeholder="Enter last name" class="name">
+                      <input type="text" class="form-control" name="lastName"  id="lname" placeholder="Enter last name" class="name" value=<?php if(isset($_SESSION['lastNameBack']))  echo $_SESSION['lastNameBack']; ?>>
                </div>
                 <div class="form-group" >
                       <label for="EmailLabel">Email address</label>
-                      <input type="text" class="form-control" id="emailAddress" name="SignUpEmail" aria-describedby="emailHelp" placeholder="Enter email"S>
-
+                      <input type="text" class="form-control" id="emailAddress" name="SignUpEmail" aria-describedby="emailHelp" placeholder="Enter email" value=<?php if(isset($_SESSION['EmailBack']))  echo $_SESSION['EmailBack']; ?> >
                 </div>
                 <div class="form-group">
                       <label for="PasswordLabel">Password</label>
@@ -60,6 +69,9 @@
        </div>
        <div class="footer"></div>
        <script src="SignUpValidate.js" type="text/javascript"></script>
-       
+       <?php
+        session_destroy();
+       ?>
+      
     </body>
 </html>

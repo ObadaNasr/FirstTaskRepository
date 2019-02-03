@@ -1,7 +1,3 @@
-jQuery.validator.setDefaults({
-  debug: true,
-  success: "valid"
-});
 $("#SignInForm").validate({
     rules:{
         Email:{
@@ -10,6 +6,6 @@ $("#SignInForm").validate({
         },
         Password:{
             required: true,
-        }
+        },
     }
 });

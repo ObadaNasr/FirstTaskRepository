@@ -20,6 +20,10 @@
              #goToSignUp{
                  margin-left: 15%;
              }
+              .error {
+                color: red;
+                
+             }
          </style>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
