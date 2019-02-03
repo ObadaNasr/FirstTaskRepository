@@ -29,7 +29,7 @@
              if (session_status() == PHP_SESSION_NONE) {
                  session_start();
              }
-              if(isset($_SESSION['firstNameBack'])){
+              if(isset($_SESSION['EmailBack'])){
                  echo "<script>"
                   . " alert('This Email is Exist');"
                          . "</script>";
